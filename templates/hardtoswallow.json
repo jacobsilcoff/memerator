@@ -1,0 +1,17 @@
+{
+  "title":"Hard To Swallow Pills",
+  "pic":"pics/hardtoswallow.jpg",
+  "font":"fonts/arialbd.ttf",
+  "text_color":"black",
+  "dropshadow":null,
+  "optimalTextSize":38,
+  "textboxes" : [
+    {
+      "prompt": "What's hard to swallow?",
+      "x":104,
+      "y":750,
+      "width":680,
+      "height":528
+    }
+  ]
+}
