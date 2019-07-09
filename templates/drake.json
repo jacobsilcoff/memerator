@@ -2,17 +2,19 @@
   "title":"Drake Meme",
   "pic":"pics/drake.jpg",
   "font":"fonts/arialbd.ttf",
+  "text_color":"black",
+  "dropshadow":null,
   "optimalTextSize":38,
   "textboxes" : [
     {
-      "Prompt": "What does Drake disapprove of?",
+      "prompt": "What does Drake disapprove of?",
       "x":347,
       "y":0,
       "width":369,
       "height":368
     },
     {
-      "Prompt": "What does Drake approve of?",
+      "prompt": "What does Drake approve of?",
       "x":347,
       "y":369,
       "width":369,

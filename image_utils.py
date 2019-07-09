@@ -45,7 +45,7 @@ class ImageText(object):
             text_size = self.get_text_size(font, font_size, text)
 
     def write_text(self, loc, text, font_filename, font_size=11,
-                   color=(0, 0, 0), max_width=None, max_height=None):
+                   color=(0, 0, 0), max_width=None, max_height=None, shadow_color=None):
         (x, y) = loc
         #if isinstance(text, str):
             #text = text.decode(self.encoding)
@@ -59,7 +59,13 @@ class ImageText(object):
             x = (self.size[0] - text_size[0]) / 2
         if y == 'center':
             y = (self.size[1] - text_size[1]) / 2
+        if shadow_color is not None:
+            self.draw.text((x-1, y-1), text, font=font, fill=shadow_color)
+            self.draw.text((x+1, y-1), text, font=font, fill=shadow_color)
+            self.draw.text((x-1, y+1), text, font=font, fill=shadow_color)
+            self.draw.text((x+1, y+1), text, font=font, fill=shadow_color)
         self.draw.text((x, y), text, font=font, fill=color)
+
         return text_size
 
     def get_text_size(self, font_filename, font_size, text):
@@ -68,7 +74,7 @@ class ImageText(object):
 
     def write_text_box(self, location, text, box_width, box_height, font_filename,
                        font_size=11, color=(0, 0, 0), place='left',
-                       justify_last_line=False):
+                       justify_last_line=False, shadowcolor=None):
         (x, y) = location
         lines = []
         line = []
@@ -85,30 +91,29 @@ class ImageText(object):
         if line:
             lines.append(line)
         lines = [' '.join(line) for line in lines if line]
-        print(len(lines))
         y = y + box_height/2 - (text_height * (len(lines) + 1.5)) / 2
         height = y
         for index, line in enumerate(lines):
             height += text_height
             if place == 'left':
                 self.write_text((x, height), line, font_filename, font_size,
-                                color)
+                                color, shadow_color=shadowcolor)
             elif place == 'right':
                 total_size = self.get_text_size(font_filename, font_size, line)
                 x_left = x + box_width - total_size[0]
                 self.write_text((x_left, height), line, font_filename,
-                                font_size, color)
+                                font_size, color, shadowcolor=shadowcolor)
             elif place == 'center':
                 total_size = self.get_text_size(font_filename, font_size, line)
                 x_left = int(x + ((box_width - total_size[0]) / 2))
                 self.write_text((x_left, height), line, font_filename,
-                                font_size, color)
+                                font_size, color, shadow_color=shadowcolor)
             elif place == 'justify':
                 words = line.split()
                 if (index == len(lines) - 1 and not justify_last_line) or \
                    len(words) == 1:
                     self.write_text((x, height), line, font_filename, font_size,
-                                    color)
+                                    color, shadow_color=shadowcolor)
                     continue
                 line_without_spaces = ''.join(words)
                 total_size = self.get_text_size(font_filename, font_size,
@@ -117,7 +122,7 @@ class ImageText(object):
                 start_x = x
                 for word in words[:-1]:
                     self.write_text((start_x, height), word, font_filename,
-                                    font_size, color)
+                                    font_size, color, shadow_color=shadowcolor)
                     word_size = self.get_text_size(font_filename, font_size,
                                                     word)
                     start_x += word_size[0] + space_width
@@ -125,5 +130,5 @@ class ImageText(object):
                                                     words[-1])
                 last_word_x = x + box_width - last_word_size[0]
                 self.write_text((last_word_x, height), words[-1], font_filename,
-                                font_size, color)
+                                font_size, color, shadow_color=shadowcolor)
         return (box_width, height - y)

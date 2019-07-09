@@ -1,0 +1,31 @@
+{
+  "title":"Distracted Boyfriend Meme",
+  "pic":"pics/distractedboyfriend.jpg",
+  "font":"fonts/arialbd.ttf",
+  "text_color":"white",
+  "dropshadow":"black",
+  "optimalTextSize":38,
+  "textboxes" : [
+    {
+      "prompt": "Who is represented by the boyfriend?",
+      "x":324,
+      "y":116,
+      "width":292,
+      "height":314
+    },
+    {
+      "prompt": "Who is the hot chick?",
+      "x":17,
+      "y":122,
+      "width":321,
+      "height":317
+    },
+    {
+      "prompt": "Who's the jealous gf?",
+      "x":557,
+      "y":82,
+      "width":252,
+      "height":351
+    }
+  ]
+}

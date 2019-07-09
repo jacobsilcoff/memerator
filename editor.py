@@ -6,14 +6,15 @@ from PIL import Image, ImageFont, ImageDraw
 #
 #   Adds a single textbox to a meme
 #
-def add_box(template, img, index, text, output):
+def add_box(template, img, index, text):
     font = template["font"]
     width = template["textboxes"][index]["width"]
     height = template["textboxes"][index]["height"]
     x = template["textboxes"][index]["x"]
     y = template["textboxes"][index]["y"]
     img.write_text_box((x,y), text, box_width=width,box_height=height,
-    font_filename=font, font_size=32, place='center')
+    color=template["text_color"], font_filename=font, font_size=32,
+    place='center', shadowcolor=template["dropshadow"])
     #img.save(output)
     #img.show()
 
@@ -21,7 +22,7 @@ def add_box(template, img, index, text, output):
 print("Welcome to memerator.")
 answer = None
 while True:
-    answer = input("Which format would you like? ").casefold() + ".json"
+    answer = input("Which format would you like? ").casefold().replace(" ", "") + ".json"
     if (any(map(lambda s : s == answer, os.listdir('templates')))):
         break
 
@@ -29,6 +30,17 @@ while True:
 with open("templates/" + answer, 'r') as f:
     selected_template = json.load(f)
 img = ImageText(selected_template["pic"])
-add_box(selected_template, img, 0,  "this is the text that i am writing. it is very long! lorem ipsum dolor set amat", 'sample.png')
-add_box(selected_template, img, 1,  "this is more text that i am writing. it is also very long! lorem ipsum dolor set amat", 'sample.png')
+for i in range(0, len(selected_template["textboxes"])):
+    txt = input(selected_template["textboxes"][i]["prompt"] + " ")
+    add_box(selected_template, img, i,  txt)
+#Show output to person
 img.show()
+
+#help user to save or not save
+answer = input("Would you like to save your meme? Please enter Y/N: ").casefold()
+while answer not in ["y", "n"]:
+    print("Bad input")
+    answer = input("Please enter either y or n: ")
+if answer == "y":
+    name = input("Please enter name of file to save to: ")
+    img.save(name)
