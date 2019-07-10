@@ -1,0 +1,31 @@
+{
+  "title":"Cat Being Fed Pills Meme",
+  "pic":"pics/catpill.jpg",
+  "font":"fonts/arialbd.ttf",
+  "text_color":"white",
+  "dropshadow":"black",
+  "optimalTextSize":38,
+  "textboxes" : [
+    {
+      "prompt": "What are the pills?",
+      "x":455,
+      "y":125,
+      "width":281,
+      "height":114
+    },
+    {
+      "prompt": "Who is feeding the pills to the cat?",
+      "x":287,
+      "y":327,
+      "width":291,
+      "height":265
+    },
+    {
+      "prompt": "Who is the cat?",
+      "x":9,
+      "y":263,
+      "width":295,
+      "height":343
+    }
+  ]
+}

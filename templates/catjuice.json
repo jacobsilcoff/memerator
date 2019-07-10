@@ -1,0 +1,24 @@
+{
+  "title":"Cat Drinking Juice Meme",
+  "pic":"pics/catjuice.jpg",
+  "font":"fonts/arialbd.ttf",
+  "text_color":"white",
+  "dropshadow":"black",
+  "optimalTextSize":38,
+  "textboxes" : [
+    {
+      "prompt": "Who is the cat?",
+      "x":164,
+      "y":116,
+      "width":287,
+      "height":240
+    },
+    {
+      "prompt": "What is the juice labeled?",
+      "x":50,
+      "y":281,
+      "width":165,
+      "height":170
+    }
+  ]
+}
