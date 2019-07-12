@@ -1,0 +1,24 @@
+{
+  "title":"Don Cherry Meme (for Beaumont)",
+  "pic":"pics/doncherry.jpg",
+  "font":"fonts/arialbd.ttf",
+  "text_color":"white",
+  "dropshadow":"black",
+  "optimalTextSize":38,
+  "textboxes" : [
+    {
+      "prompt": "Who is Don Cherry?",
+      "x":33,
+      "y":131,
+      "width":363,
+      "height":249
+    },
+    {
+      "prompt": "Who is other mans?",
+      "x":385,
+      "y":157,
+      "width":324,
+      "height":253
+    }
+  ]
+}
