@@ -72,15 +72,19 @@ def get_prompts(meme):
         return {"title":full_json["title"],
                 "text_boxes": prompts}
 def make_meme(format, responses, output=None, show=False):
+    try:
         format = format.replace(" ","") + ".json"
         #read json file
-        with open("templates/" + format, 'r') as f:
-            selected_template = json.load(f)
+        f = open("templates/" + format, 'r')
+        selected_template = json.load(f)
         img = ImageText(selected_template["pic"])
         for i,txt in enumerate(responses):
             add_box(selected_template, img, i,  txt)
-        #Show output to person
-        if show:
-            img.show()
-        if ouput is not None:
-            img.save(output + ".jpg")
+    except Exception as e:
+        return False
+    #Show output to person
+    if show:
+        img.show()
+    if output is not None:
+        img.save(output + ".jpg")
+    return True
