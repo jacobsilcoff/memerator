@@ -1,6 +1,7 @@
-from flask import Flask, escape, request
-from editor import get_prompts, make_meme, get_format_titles
 from twitter_handler import send_image
+from flask import Flask, escape, request
+from editor import get_prompts, make_meme, get_format_titles, PATH
+
 
 app = Flask(__name__)
 
@@ -25,7 +26,9 @@ def generate():
     caption = request.args.get("caption", "")
     if format == None:
         return "No good!"
-    if make_meme(meme_format, text, output='result', show=True):
-        print("Meme made, sending tweet")
-        send_image('result.jpg', caption)
-    return "Meme made"
+    try:
+        make_meme(meme_format, text, output='result')
+    except Exception as e:
+        return "Error Encountered, failed to send: " + str(e)
+    send_image('/home/jacobsilcoff/memerator/result.jpg', caption)
+    return "Send tweet!"

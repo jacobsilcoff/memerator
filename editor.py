@@ -3,11 +3,13 @@ import json
 import os
 from PIL import Image, ImageFont, ImageDraw
 
+PATH = "/home/jacobsilcoff/memerator/"
+
 #
 #   Adds a single textbox to a meme
 #
 def add_box(template, img, index, text):
-    font = template["font"]
+    font = PATH + template["font"]
     width = template["textboxes"][index]["width"]
     height = template["textboxes"][index]["height"]
     x = template["textboxes"][index]["x"]
@@ -18,73 +20,39 @@ def add_box(template, img, index, text):
     #img.save(output)
     #img.show()
 
-### CLI:
-def run_cli():
-    print("Welcome to memerator.")
-    answer = None
-    while True:
-        answer = input("Which format would you like? ").casefold().replace(" ", "") + ".json"
-        if (any(map(lambda s : s == answer, os.listdir('templates')))):
-            break
-
-    #read json file
-    with open("templates/" + answer, 'r') as f:
-        selected_template = json.load(f)
-    img = ImageText(selected_template["pic"])
-    for i in range(0, len(selected_template["textboxes"])):
-        txt = input(selected_template["textboxes"][i]["prompt"] + " ")
-        add_box(selected_template, img, i,  txt)
-    #Show output to person
-    img.show()
-
-    #help user to save or not save
-    answer = input("Would you like to save your meme? Please enter Y/N: ").casefold()
-    while answer not in ["y", "n"]:
-        print("Bad input")
-        answer = input("Please enter either y or n: ")
-    if answer == "y":
-        name = input("Please enter name of file to save to: ")
-        img.save(name)
-
 ### Public Interface:
 def get_all_formats():
-    opts = os.listdir('templates')
+    opts = os.listdir('/home/jacobsilcoff/memerator/templates')
     temp = {}
     for opt in opts:
-        with open("templates/" + opt, 'r') as f:
+        with open("/home/jacobsilcoff/memerator/templates/" + opt, 'r') as f:
             temp[opt[0:-5]] = json.load(f)
     return temp
 
 def get_format_titles():
-    opts = os.listdir('templates')
+    opts = os.listdir('/home/jacobsilcoff/memerator/templates')
     temp = {}
     for opt in opts:
-        with open("templates/" + opt, 'r') as f:
+        with open("/home/jacobsilcoff/memerator/templates/" + opt, 'r') as f:
             temp[opt[0:-5]] = json.load(f)['title']
     return temp
 
 def get_prompts(meme):
     meme = meme.replace(" ", "")
-    with open("templates/" + meme + ".json", 'r') as f:
+    with open("/home/jacobsilcoff/memerator/templates/" + meme + ".json", 'r') as f:
         full_json = json.load(f)
         prompts = list(map(lambda x : {"prompt":x["prompt"]},
                        full_json["textboxes"]))
         return {"title":full_json["title"],
                 "text_boxes": prompts}
-def make_meme(format, responses, output=None, show=False):
-    try:
-        format = format.replace(" ","") + ".json"
-        #read json file
-        f = open("templates/" + format, 'r')
-        selected_template = json.load(f)
-        img = ImageText(selected_template["pic"])
-        for i,txt in enumerate(responses):
-            add_box(selected_template, img, i,  txt)
-    except Exception as e:
-        return False
-    #Show output to person
-    if show:
-        img.show()
+def make_meme(format, responses, output=None):
+    format = format.replace(" ","") + ".json"
+    #read json file
+    f = open("/home/jacobsilcoff/memerator/templates/" + format, 'r')
+    selected_template = json.load(f)
+    img = ImageText(PATH + selected_template["pic"])
+    for i,txt in enumerate(responses):
+        add_box(selected_template, img, i,  txt)
     if output is not None:
-        img.save(output + ".jpg")
-    return True
+        img.save("/home/jacobsilcoff/memerator/" + output + ".jpg")
+
