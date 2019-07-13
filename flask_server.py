@@ -1,5 +1,6 @@
 from flask import Flask, escape, request
 from editor import get_prompts, make_meme, get_format_titles
+from twitter_handler import send_image
 
 app = Flask(__name__)
 
