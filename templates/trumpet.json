@@ -1,0 +1,24 @@
+{
+  "title":"Boy Blaring His Trumpet Meme",
+  "pic":"pics/trumpet.jpg",
+  "font":"fonts/arialbd.ttf",
+  "text_color":"white",
+  "dropshadow":"black",
+  "optimalTextSize":34,
+  "textboxes" : [
+    {
+      "prompt": "Who is the boy playing the trumpet?",
+      "x":496,
+      "y":104,
+      "width":368,
+      "height":245
+    },
+    {
+      "prompt": "Who is the girl being annoyed?",
+      "x":188,
+      "y":375,
+      "width":396,
+      "height":284
+    }
+  ]
+}

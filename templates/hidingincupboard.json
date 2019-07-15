@@ -1,0 +1,24 @@
+{
+  "title":"Man Hiding In Cupboard Behind Pig Meme",
+  "pic":"pics/hidingincupboard.jpg",
+  "font":"fonts/arialbd.ttf",
+  "text_color":"white",
+  "dropshadow":"black",
+  "optimalTextSize":38,
+  "textboxes" : [
+    {
+      "prompt": "Who is the guy in the cupboard?",
+      "x":110,
+      "y":112,
+      "width":336,
+      "height":416
+    },
+    {
+      "prompt": "What is the swat man?",
+      "x":19,
+      "y":475,
+      "width":414,
+      "height":316
+    }
+  ]
+}

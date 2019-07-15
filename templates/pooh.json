@@ -1,0 +1,24 @@
+{
+  "title":"Fancy Pooh Meme",
+  "pic":"pics/pooh.jpg",
+  "font":"fonts/arialbd.ttf",
+  "text_color":"black",
+  "dropshadow":null,
+  "optimalTextSize":34,
+  "textboxes" : [
+    {
+      "prompt": "What is regular pooh thing?",
+      "x":301,
+      "y":0,
+      "width":296,
+      "height":294
+    },
+    {
+      "prompt": "What is the fancy pooh thing?",
+      "x":301,
+      "y":303,
+      "width":296,
+      "height":298
+    }
+  ]
+}

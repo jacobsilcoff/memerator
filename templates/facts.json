@@ -1,0 +1,17 @@
+{
+  "title":"Book of Facts Meme",
+  "pic":"pics/facts.jpg",
+  "font":"fonts/arialbd.ttf",
+  "text_color":"black",
+  "dropshadow":null,
+  "optimalTextSize":28,
+  "textboxes" : [
+    {
+      "prompt": "What does the book of facts say?",
+      "x":6,
+      "y":328,
+      "width":203,
+      "height":149
+    }
+  ]
+}

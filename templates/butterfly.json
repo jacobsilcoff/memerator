@@ -1,0 +1,31 @@
+{
+  "title":"Anime Guy Catching Butterfly Meme",
+  "pic":"pics/butterfly.jpg",
+  "font":"fonts/arialbd.ttf",
+  "text_color":"yellow",
+  "dropshadow":"black",
+  "optimalTextSize":72,
+  "textboxes" : [
+    {
+      "prompt": "Who is the anime boy?",
+      "x":227,
+      "y":248,
+      "width":595,
+      "height":463
+    },
+    {
+      "prompt": "What is the butterfly?",
+      "x":927,
+      "y":42,
+      "width":536,
+      "height":366
+    },
+    {
+      "prompt": "What is the boy saying?",
+      "x":123,
+      "y":741,
+      "width":1398,
+      "height":146
+    }
+  ]
+}
